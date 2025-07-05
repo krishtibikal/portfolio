@@ -43,7 +43,7 @@
       As a seasoned Data & Technology Architect at Emerald, I bring over 16 years of experience across retail, finance, telecom, and B2B industries. My specialization includes embedded analytics, enterprise-grade BI platforms, and AI-driven insights.
     </p>
     <p class="text-gray-700 leading-relaxed mt-2">
-      I’m a certified ThoughtSpot Architect and recently spoke at the Databricks Data + AI Summit 2023 on self-service analytics adoption via embedded dashboards. :contentReference[oaicite:8]{index=8}
+      I’m a certified ThoughtSpot Architect and recently spoke at the Databricks Data + AI Summit 2023 on self-service analytics adoption via embedded dashboards.
     </p>
   </section>
 
@@ -51,55 +51,77 @@
   <section id="projects" class="bg-white py-16 px-4">
     <div class="max-w-6xl mx-auto">
       <h3 class="text-2xl font-bold text-gray-800 mb-8">Projects & Highlights</h3>
-
       <div class="grid md:grid-cols-2 gap-8">
         <div class="bg-gray-100 p-6 rounded-lg shadow">
           <h4 class="text-lg font-semibold text-indigo-700">Embedded Analytics @ Emerald</h4>
           <p class="mt-2 text-gray-600">
-            Built self‑service dashboards, enabling embedded analytics across Emerald platforms—showcased at Databricks Data + AI Summit 2023. :contentReference[oaicite:9]{index=9}
+            Built self‑service dashboards, enabling embedded analytics across Emerald platforms—showcased at Databricks Data + AI Summit 2023.
           </p>
         </div>
         <div class="bg-gray-100 p-6 rounded-lg shadow">
           <h4 class="text-lg font-semibold text-indigo-700">ThoughtSpot Certification</h4>
           <p class="mt-2 text-gray-600">
-            Earned the ThoughtSpot Architect certification, affirming expertise in search-driven analytics solutions. :contentReference[oaicite:10]{index=10}
+            Earned the ThoughtSpot Architect certification, affirming expertise in search-driven analytics solutions.
           </p>
         </div>
-        <!-- Additional project slots -->
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-<section id="contact" class="max-w-3xl mx-auto py-16 px-4">
-  <h3 class="text-2xl font-bold text-gray-800 mb-4">Get In Touch</h3>
-  <form action="https://formsubmit.co/krish.pm2012@gmail.com" method="POST" class="space-y-4">
-    
-    <!-- Spam protection (honeypot) -->
-    <input type="text" name="_honey" style="display:none">
+  <section id="contact" class="max-w-3xl mx-auto py-16 px-4">
+    <h3 class="text-2xl font-bold text-gray-800 mb-4">Get In Touch</h3>
 
-    <!-- Optional: Disable CAPTCHA -->
-    <input type="hidden" name="_captcha" value="false">
-    
-    <!-- Redirect after submission -->
-    <input type="hidden" name="_next" value="https://krishtibikal.github.io/portfolio//thank-you.html">
+    <!-- Success message -->
+    <div id="success-message" class="hidden bg-green-100 text-green-800 p-4 rounded-lg mb-4">
+      ✅ Thank you! Your message has been sent.
+    </div>
 
-    <!-- Optional subject line for your inbox -->
-    <input type="hidden" name="_subject" value="New Portfolio Contact Message from krishkumar.dev">
-
-    <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-2 border rounded-lg" />
-    <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-2 border rounded-lg" />
-    <textarea name="message" placeholder="Your Message" rows="4" required class="w-full px-4 py-2 border rounded-lg"></textarea>
-    <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700">
-      Send Message
-    </button>
-  </form>
-</section>
+    <form id="contact-form" class="space-y-4">
+      <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-2 border rounded-lg" />
+      <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-2 border rounded-lg" />
+      <textarea name="message" placeholder="Your Message" rows="4" required class="w-full px-4 py-2 border rounded-lg"></textarea>
+      <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700">
+        Send Message
+      </button>
+    </form>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-gray-100 text-center py-6 text-sm text-gray-500">
     © 2025 Krishti Bikal • <a href="https://www.linkedin.com/in/krishtibikal/" target="_blank" class="text-indigo-600 hover:underline">LinkedIn</a>
   </footer>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('success-message');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const submitURL = 'https://formsubmit.co/krish.pm2012@gmail.com';
+
+      try {
+        const response = await fetch(submitURL, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          successMsg.classList.remove('hidden');
+          form.reset();
+        } else {
+          alert('Something went wrong. Please try again later.');
+        }
+      } catch (error) {
+        alert('Error: ' + error.message);
+      }
+    });
+  </script>
 
 </body>
 </html>
